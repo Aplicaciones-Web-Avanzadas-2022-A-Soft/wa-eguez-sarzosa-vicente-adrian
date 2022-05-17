@@ -144,10 +144,24 @@ edadAdrian = edadAdrian + 1;
 console.log(edadAdrian); // 33
 console.log(edadVicente); // 32
 
-
-
-
-
+// Variables por referencia: object ({},[])
+let notas = {
+    total: 10
+};
+let notasSegundoBimestre = notas;
+notasSegundoBimestre.total = notasSegundoBimestre.total + 1;
+console.log(notas);
+console.log(notasSegundoBimestre);
+notas.total = notas.total + 1;
+console.log(notas);
+console.log(notasSegundoBimestre);
+// Como clonar objetos
+let notasTercerBimestre = Object.assign({}, notas);
+// Object.assign([], arreglo);
+notasTercerBimestre.total = notasTercerBimestre.total + 1;
+console.log('notas', notas);
+console.log('notasSegundoBimestre', notasSegundoBimestre);
+console.log('notasTercerBimestre', notasTercerBimestre);
 
 
 
