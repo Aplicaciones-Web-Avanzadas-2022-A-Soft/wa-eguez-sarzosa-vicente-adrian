@@ -79,3 +79,100 @@ const respuestaIndex = arreglo
         }
     );
 console.log('respuestaIndex', respuestaIndex);  // indice -> 6 // No encuentra -> -1
+
+
+// for (let i; i>arreglo.length; i--){
+//     console.log('valorActual', arreglo[i]);
+// }
+// FOREACH
+// itera el arreglo
+const respuestaForEach = arreglo
+    .forEach(
+        function (valorActual, indiceActual, arregloCompleto) {
+            console.log('valorActual', valorActual);
+        }
+    );
+console.log('respuestaForEach', respuestaForEach);  // undefined
+
+
+// MAP (Modificar o MUTAR el arreglo y devuelve un nuevo arreglo
+// enviamos los datos del nuevo arreglo
+// devuelve el nuevo arreglo
+const respuestaMap = arreglo
+    .map(
+        (valorActual, indiceActual, arregloCompleto) => {
+            const nuevoElemento = {
+                id: valorActual.id,
+                nombre: valorActual.nombre,
+                nota: valorActual.nota + 1,
+                casado: false
+            };
+            return nuevoElemento;
+        }
+    );
+console.log('respuestaMap', respuestaMap);
+console.log('arreglo', arreglo);
+
+
+// FILTER (filtrar el arreglo)
+// enviamos EXPRESION TRUTY FALSY
+// devuelve los elementos que cumplen esa condicion
+
+const respuestaFilter = arreglo
+    .filter(
+        (valorActual, indiceActual, arregloCompleto) => {
+            return valorActual.nota >= 14;
+        }
+    );
+console.log('respuestaFilter', respuestaFilter);
+console.log('arreglo', arreglo);
+
+
+
+// SOME -> expresion
+// DEVUELVE BOOLEANO
+// Hay ALGUNA nota menor a nueve? SI NO
+// OR
+const respuestaSome = arreglo
+    .some(
+        function (valorActual, indiceActual, arregloCompleto)  {
+            return valorActual.nota < 9;
+        }
+    );
+console.log('respuestaSome', respuestaSome);
+
+
+// EVERY -> expresion
+// DEVUELVE BOOLEANO
+// TODAS las notas son mayores a 14? SI NO
+// AND
+const respuestaEvery = arreglo
+    .every(
+        function (valorActual, indiceActual, arregloCompleto) {
+            return valorActual.nota > 14;
+        }
+    );
+console.log('respuestaEvery', respuestaEvery);
+
+
+// REDUCE           izq -> der
+// REDUCE RIGHT     der -> izq
+// 100 <3 Puntos de vida
+// 100 -1 -2 -3 -5 -6 -5 -4 -3 -1 =
+// 0 1 + 2 + 3 + 4 + 6 + 5 + 4 + 3 + 1 =
+// [1,2,3,5,6,5,4,3,1]
+const respuestaReduce = arreglo
+    .reduce(
+        function (valorAcumulado, valorActual, indice, arreglo) {
+            return (valorAcumulado + valorActual.nota);
+        },
+        0 // Acumulador
+    );
+arreglo.reduce((a,c)=>a + c.nota, 100)
+arreglo.filter((a)=>a.nota < 14)
+    .map((e)=> e.nota + 1 )
+
+
+
+console.log('respuestaReduce', respuestaReduce); // 100 - X = -46
+console.log('Promedio', respuestaReduce/ arreglo.length);
