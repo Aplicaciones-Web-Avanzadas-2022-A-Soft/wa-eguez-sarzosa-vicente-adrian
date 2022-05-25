@@ -5,13 +5,7 @@ console.log('PRIMERO');
 // 1) Leer archivo:06-ejemplo.txt, luego imprimir en consola
 // 2) Despues del paso 1, Leer archivo:01-variables.js, luego imprimir en consola
 // 3) Crear un nuevo archivo llamaddo 06-nuevo-archivo.txt con el contenido de los otros dos archivos.
-fs.writeFile(
-    'nombreArchivoOPath',
-    'contenidoArchivo',
-    (errorEscritura)=>{
 
-    }
-);
 
 fs.readFile(
     './06-ejemplo.txt', // Nombre o path del archivo
@@ -30,7 +24,19 @@ fs.readFile(
                         console.error(errorLecturaSegundoArchivo);
                         throw new Error('Error leyendo primer archivo');
                     }else{
-                        console.log(contenidoPrimerArchivo, contenidoSegundoArchivo);
+                        const nuevoContenido = contenidoPrimerArchivo + contenidoSegundoArchivo;
+                        fs.writeFile(
+                            './06-nuevo-archivo.txt',
+                            nuevoContenido,
+                            (errorEscritura)=>{
+                                if(errorEscritura){
+                                    console.error(errorEscritura);
+                                    throw new Error('Error escribiendo nuevo archivo');
+                                }else{
+                                    console.log('Completado');
+                                }
+                            }
+                        );
                     }
                 }
             );
