@@ -7,34 +7,41 @@ $ npx create-next-app --example with-typescript react-nextjs
 ```
 
 # 2) Scripts y dependencias
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```json
 {
   "scripts": {
+    "hola-mundo": "dir && echo 'HOLA'",
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "export": "next build && next export",
     "type-check": "tsc"
-  },
-  "dependencies": {
-    "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
   }
 }
-
 ```
+
+# 3) Http Server
+```bash
+$ npm i -g http-server
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
