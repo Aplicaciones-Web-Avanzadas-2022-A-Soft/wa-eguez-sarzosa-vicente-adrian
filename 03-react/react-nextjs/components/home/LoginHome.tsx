@@ -1,10 +1,4 @@
-interface LoginProperties {
-    propiedadesImagen: {
-        width: number;
-        height: number;
-        urlImagen: string;
-    };
-}
+import styles from './login-home.module.css'
 
 type LoginPropiertiesType = {
     propiedadesImagen: {
@@ -13,16 +7,33 @@ type LoginPropiertiesType = {
         urlImagen: string;
     };
 }
+interface LoginProperties {
+    color: string;
+    backgroundColor: string;
+    propiedadesImagen: {
+        width: number;
+        height: number;
+        urlImagen: string;
+    };
+}
 
 const LoginHome = (props: LoginProperties) => {
-    // const propiedadesImagen = {
-    //     width: 200,
-    //     height: 100,
-    //     urlImagen: 'https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg'
-    // };
+    const misEstilos = {
+        color: props.color,
+        backgroundColor: props.backgroundColor,
+        borderBottom: '5px solid brown',
+    };
     return (
         <>
-            <h1>Login home</h1>
+
+            {/*<h1 style={{*/}
+            {/*    color: props.color,*/}
+            {/*    backgroundColor: props.backgroundColor,}}>*/}
+            {/*    Login home*/}
+            {/*</h1>*/}
+            <h1 style={misEstilos}>Login home</h1>
+            <h2 className={styles.azul}>AZUL</h2>
+            <h2 className={styles.rojo}>ROJO</h2>
             <img src={props.propiedadesImagen.urlImagen}
                  width={props.propiedadesImagen.width}
                  height={props.propiedadesImagen.height}

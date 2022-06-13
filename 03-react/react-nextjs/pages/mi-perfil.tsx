@@ -40,6 +40,8 @@ const MiPerfilPage = () => {
     const desplegarMensaje = ()=>{
         if(estaLogeado){
             return LoginHome({
+                color:'black',
+                backgroundColor: 'orange',
                 propiedadesImagen: {
                     width: 400,
                     height: 200,
@@ -51,6 +53,7 @@ const MiPerfilPage = () => {
         }
     }
 
+    // @ts-ignore
     return (
         <Layout>
             <p>hello {'Adrian'.toUpperCase()}</p>
@@ -84,7 +87,9 @@ const MiPerfilPage = () => {
                     height: 150,
                     urlImagen: 'https://media.istockphoto.com/photos/plaza-de-san-francisco-in-old-town-quito-picture-id975466144?k=20&m=975466144&s=612x612&w=0&h=fgPROePmDD29FV8Bx2z-X7ISUfytIplCjvuda-0euII='
                     }
-                }></LoginHome> :
+                } color={'green'} backgroundColor={'black'}>
+
+                </LoginHome> :
                 <BienvenidaHome></BienvenidaHome>
             }</div>
 
