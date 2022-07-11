@@ -44,6 +44,9 @@ export default function Formulario() {
                                    minLength: {value: 5, message: 'Longitud minima 5'},
                                    validate: {
                                        soloNumeros: (valorActual) => {
+                                           // Transformar a numero un string:
+                                           // Number("1")
+                                           // +"1"
                                            if (Number.isNaN(+valorActual)) {
                                                // Se puede devolver un false o un mensaje de error
                                                // return false; // Error
