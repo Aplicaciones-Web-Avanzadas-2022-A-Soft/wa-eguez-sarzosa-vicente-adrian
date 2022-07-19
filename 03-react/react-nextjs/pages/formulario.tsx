@@ -3,6 +3,11 @@ import {useState} from "react";
 import {useForm, Controller} from "react-hook-form";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {toast} from "react-hot-toast";
+import {
+    List,
+    ListInput
+} from 'konsta/react';
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
 
 type FormularioEjemplo = {
     nombre: string;
@@ -109,6 +114,18 @@ export default function Formulario() {
                             }
                         </FormControl>
                     </div>
+                    {/*import AccessibilityIcon from '@mui/icons-material/Accessibility';*/}
+                    <div className="mb-3">
+                        <List>
+                            <ListInput
+                                label="TV Show"
+                                type="text"
+                                placeholder="Your favorite TV show"
+                                info="Type something to see clear button"
+                                media={<AccessibilityIcon/>}
+                            />
+                        </List>
+                    </div>
                     <button type="submit"
                             disabled={!isValid}
                             className="btn btn-primary">
@@ -134,6 +151,9 @@ export default function Formulario() {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                <h1 className="text-3xl font-bold underline">
+                    Hello world!
+                </h1>
             </Layout>
         </>
     )
