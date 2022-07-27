@@ -16,6 +16,7 @@ export class EventosGateway {
         @ConnectedSocket()
             socket: Socket
     ) {
+        console.log('message', message);
         socket.broadcast
             .emit(
                 'escucharEventoHola',
