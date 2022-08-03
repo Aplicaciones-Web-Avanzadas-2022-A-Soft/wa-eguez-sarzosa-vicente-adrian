@@ -37,6 +37,24 @@ export default function Websocket() {
                 };
                 setMensajes((mensajesAnteriores) => [...mensajesAnteriores, nuevoMensaje]);
             });
+            // useEffect
+            socket.on('escucharEventoUnirseSala', (data: { mensaje: string }) => {
+                const nuevoMensaje: MensajeChatProps = {
+                    mensaje: data.mensaje,
+                    nombre: 'Sistema',
+                    posicion: 'I'
+                };
+                setMensajes((mensajesAnteriores) => [...mensajesAnteriores, nuevoMensaje]);
+            });
+            socket.on('escucharEventoMensajeSala', (data: { mensaje: string, nombre:string, salaId: string }) => {
+                console.log('data cliente', data);
+                const nuevoMensaje: MensajeChatProps = {
+                    mensaje: data.salaId + ' - ' + data.mensaje,
+                    nombre: data.nombre,
+                    posicion: 'I'
+                };
+                setMensajes((mensajesAnteriores) => [...mensajesAnteriores, nuevoMensaje]);
+            });
         },
         []
     )
@@ -55,9 +73,9 @@ export default function Websocket() {
         )
     }
     const unirseSala = (data) => {
-        if(data.mensaje === ''){
+        if (data.mensaje === '') {
             const dataEventoUnirseSala = {
-                salaID: data.salaId,
+                salaId: data.salaId,
                 nombre: data.nombre,
             };
             socket.emit(
@@ -65,14 +83,33 @@ export default function Websocket() {
                 dataEventoUnirseSala, //  Datos evento
                 () => { // Callback o respuesta del evefnto
                     const nuevoMensaje: MensajeChatProps = {
-                        mensaje: 'Bienvenido a la sala ' + dataEventoUnirseSala.salaID,
+                        mensaje: 'Bienvenido a la sala ' + dataEventoUnirseSala.salaId,
                         nombre: 'Sistema',
                         posicion: 'I'
                     };
                     setMensajes((mensajesAnteriores) => [...mensajesAnteriores, nuevoMensaje]);
                 }
             )
+        } else {
+            const dataEventoEnviarMensajeSala = {
+                salaId: data.salaId,
+                nombre: data.nombre,
+                mensaje: data.mensaje
+            };
+            socket.emit(
+                    'enviarMensaje', // Nombre Evento
+                    dataEventoEnviarMensajeSala, //  Datos evento
+                () => { // Callback o respuesta del evefnto
+                    const nuevoMensaje: MensajeChatProps = {
+                        mensaje: data.salaId + ' - ' + data.mensaje,
+                        nombre: data.nombre,
+                        posicion: 'D'
+                    };
+                    setMensajes((mensajesAnteriores) => [...mensajesAnteriores, nuevoMensaje]);
+                }
+            )
         }
+
     }
     return (
         <>

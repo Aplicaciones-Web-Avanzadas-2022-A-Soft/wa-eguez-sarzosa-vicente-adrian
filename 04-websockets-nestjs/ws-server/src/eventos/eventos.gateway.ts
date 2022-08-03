@@ -47,11 +47,13 @@ export class EventosGateway {
         @ConnectedSocket()
             socket: Socket
     ) {
+        // backend
         const mensajeSala = {
-            nombre: +message.nombre,
-            mensaje: +message.mensaje,
-            salaId: +message.salaId
+            nombre: message.nombre,
+            mensaje: message.mensaje,
+            salaId: message.salaId
         };
+        console.log('mensajeSala', mensajeSala)
         socket.broadcast.to(message.salaId)
             .emit('escucharEventoMensajeSala', mensajeSala);
         return {mensaje: 'ok'};
