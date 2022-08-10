@@ -144,7 +144,7 @@ console.log('respuestaSome', respuestaSome);
 
 // EVERY -> expresion
 // DEVUELVE BOOLEANO
-// TODAS las notas son mayores a 14? SI NO
+// TODAS las nota son mayores a 14? SI NO
 // AND
 const respuestaEvery = arreglo
     .every(
