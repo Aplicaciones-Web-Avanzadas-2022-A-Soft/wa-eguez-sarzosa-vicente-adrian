@@ -25,9 +25,9 @@ import {NotaEntity} from "./nota/nota.entity";
         }),
         UsuarioModule,
         NotaModule
-    ],
-    controllers: [AppController],
-    providers: [AppService],
+    ], //  Otros modulos - Agrupador
+    controllers: [AppController], // Controladores - HTTP Validaciones
+    providers: [AppService], // Servicios - Logica de negocio
 })
 export class AppModule {
 }

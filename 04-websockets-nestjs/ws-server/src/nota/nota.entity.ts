@@ -39,5 +39,5 @@ export class NotaEntity {
     @ManyToOne( // Muchos a uno, del hijo al papa
         () => UsuarioEntity, // Entidad relacionada
         (user) => user.notas)
-    usuario: UsuarioEntity;
+    usuario: UsuarioEntity | number;
 }
