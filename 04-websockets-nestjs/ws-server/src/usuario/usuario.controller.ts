@@ -14,6 +14,7 @@ import {
 import {UsuarioService} from "./usuario.service";
 import {UsuarioCreateDto} from "./dto/usuario-create.dto";
 import {validate} from "class-validator";
+import {UsuarioUpdateDto} from "./dto/usuario-update.dto";
 
 @Controller('usuario')
 export class UsuarioController {
@@ -74,11 +75,22 @@ export class UsuarioController {
 
     @Put("/:id") // PUT /usuario/:id
     @HttpCode(200)
-    update(
+    async update(
         @Query() queryParams,
         @Param() params,
         @Body() bodyParams
     ){
+        const nuevoRegistro = new UsuarioUpdateDto(); // creamos dto
+        nuevoRegistro.rol = bodyParams.rol;
+        nuevoRegistro.nombres = bodyParams.nombres;
+        nuevoRegistro.apellidos = bodyParams.apellidos;
+
+        const errores = await validate(nuevoRegistro); // validamos
+        if(errores.length > 0){
+            console.error({errores});
+            throw new BadRequestException({mensaje:'Envio mal datos'});
+        }
+        // Creamos
         return this.usuarioService.update(
             bodyParams,
             +params.id
@@ -94,14 +106,5 @@ export class UsuarioController {
     ){
         return this.usuarioService.delete(+params.id);
     }
-
-
-
-
-
-
-
-
-
 
 }
