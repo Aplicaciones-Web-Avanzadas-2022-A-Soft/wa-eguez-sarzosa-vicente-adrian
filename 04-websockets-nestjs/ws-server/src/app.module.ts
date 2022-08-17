@@ -21,7 +21,7 @@ import {NotaEntity} from "./nota/nota.entity";
                 UsuarioEntity, NotaEntity
             ], // entidades de TOODOO el aplicativo
             synchronize: true,
-            dropSchema: true,
+            dropSchema: false,
         }),
         UsuarioModule,
         NotaModule
